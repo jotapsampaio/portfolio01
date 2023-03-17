@@ -1,0 +1,418 @@
+/* ================= GOOGLE FOONTS ================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* ================= VARIAVEIS CSS ================ */
+:root {
+    --cabecalho-altura: 3.5rem;
+
+    /* ================== COLOReS ===================== */
+    /* Colores em formato hsl ( matiz, saturação, leveza */
+    /* 
+        Purple: hsl(250, 66%, 75%)
+        Blue: hsl(207, 90%, 72%)
+        Pink: hsl(356, 66%, 75%)
+        Teal: hsl(174, 63%, 62%)
+    */
+
+    --primeiro-matiz: 250;
+    --saturacao: 66%;
+    --leveza: 75%;
+    --segundo-matiz: 219;
+
+    --primeira-cor: hsl(var(--primeiro-matiz), var(--saturacao), var(--leveza));
+    --primeira-cor-alternativa: hsl(var(--primeiro-matiz), var(--saturacao), 71%); /* -4% */
+    --cor-titulo: hsl(var(--segundo-matiz), 15%, 95%);
+    --cor-texto: hsl(var(--segundo-matiz), 8%, 75%);
+    --cor-texto-claro: hsl(var(--segundo-matiz), 4%, 55%);
+    --cor-corpo: hsl(var(--segundo-matiz), 48%, 8%);
+    --cor-container: hsl(var(--segundo-matiz), 32%, 12%);
+
+    /* ================ FONTE E TIPOGRAFIA ========================*/
+    /* 1Rem é igual a 16px */
+
+    --fonte-corpo: 'Poppins', sans-serif;
+    --maior-tamanho-fonte: 1.75rem;
+    --tamanho-fonte-h1: 1.5rem;
+    --tamanho-fonte-h2: 1.25rem;
+    --tamanho-fonte-h3: 1rem;
+    --tamanho-fonte-normal: .938rem;
+    --tamanho-fonte-pequena: .813rem; 
+    --tamanho-fonte-menor: .75rem;
+    --tamanho-fonte-menor-ainda: .625rem;
+
+    /* =================LARGURA DA FONTE =================== */
+
+    --fonte-media: 500;
+    --fonte-semibold: 600;
+
+    /* ================= EIXO Z ================== */
+
+    --z-dica-ferramenta: 10;
+    --z-fixo: 100;
+    --z-modal: 1000;
+}
+
+/* ============== TIPOGRAFIA RESPONSIVA ====================== */
+
+@media  screen and (min-width: 968px) {
+    :root {
+        --maior-tamanho-fonte: 2.5rem;
+        --tamanho-fonte-h1: 2.25rem;
+        --tamanho-fonte-h2: 1.5rem;
+        --tamanho-fonte-h3: 1.25rem;
+        --tamanho-fonte-normal: 1rem;
+        --tamanho-fonte-pequena: .857rem; 
+        --tamanho-fonte-menor: 813rem;
+    }
+}
+
+/* =================== RESET ================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body, 
+button, 
+input, 
+textarea {
+    font-family: var(--fonte-corpo);
+    font-size: var(--tamanho-fonte-normal);
+}
+
+body {
+    background-color: var(--cor-corpo);
+    color: var(--cor-texto);
+}
+
+h1,
+h2,
+h3 {
+    color: var(--cor-texto);
+    font-weight: var(--fonte-semibold);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+/* ========================= TEMA =============================== */
+
+/* ===================== VARIAVEIS TEMA ESCURO ===================== */
+
+/* Mudança de cor em algumas partes, com tema Claro */
+
+/* ========= REUTILIZAR CLASSES CSS ==================== */
+
+.container {
+    max-width: 968px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.main {
+    overflow: hidden;
+}
+
+.section {
+    padding: 4.5rem 0 1rem;
+}
+
+.section__title,
+.section__subtitle {
+    text-align: center;
+}
+
+.section__title {
+    font-size: var(--tamanho-fonte-h2);
+    color: var(--primeira-cor);
+    margin-bottom: 2rem;
+}
+
+.section__subtitle {
+    display: block;
+    font-size: var(--tamanho-fonte-menor);
+    color: var(--cor-texto-claro);
+}
+
+/* ============== CABEÇALHO E MENU ===================== */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--cor-corpo);
+    z-index: var(--z-fixo);
+}
+
+.nav {
+    height: var(--cabecalho-altura);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    color: var(--primeira-cor);
+    font-weight: var(--tamanho-fonte-normal);
+    transition: .4s;
+}
+
+.nav__logo:hover {
+    color: var(--primeira-cor-alternativa);
+}
+
+.nav__menu {
+    position: fixed;
+    bottom: 1rem;
+    background-color: hsl(var(--segundo-matiz), 32%, 16%, .8);
+    width: 90%;
+    border-radius: 4rem;
+    padding: 1rem 2.25rem;
+    backdrop-filter: blur(10px);
+}
+
+.nav__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__link {
+    color: var(--cor-texto);
+    font-size: 1.25rem;
+    padding: .4rem;
+    display: flex;
+    border-radius: 5rem;
+}
+
+.active__link {
+    background: linear-gradient(180deg,
+                hsla(var(--primeiro-matiz), var(--saturacao), var(--leveza), 1),
+                hsla(var(--primeiro-matiz), var(--saturacao), var(--leveza), .2)
+                );
+    box-shadow: 0 0 16px hsla(var(--primeiro-matiz), var(--saturacao), var(--leveza), .4);
+}
+
+/* link ativo */
+
+/* Mudar cor de fundo do cabeçalho */
+
+/* HOME */
+
+.home__container {
+    position: relative;
+    row-gap: 4.5rem;
+    padding-top: 2rem;
+}
+
+.home__data {
+    text-align: center;
+}
+
+.home__greeting,
+.home__education {
+    font-size: var(--tamanho-fonte-pequena);
+    font-weight: var(--tamanho-fonte-normal);
+}
+
+.home__greeting {
+    display: block;
+    color: var(--cor-titulo);
+    margin-bottom: .25rem;
+}
+
+.home__education {
+    color: var(--cor-texto);
+    margin-bottom: 2.5rem;
+}
+
+.home__name {
+    font-size: var(--maior-tamanho-fonte);
+}
+
+.home__img {
+    width: 160px;
+}
+
+.home__handle {
+    justify-self: center;
+    width: 190px;
+    height: 293px;
+    background: linear-gradient(180deg,
+                hsla(var(--primeiro-matiz), var(--saturacao), var(--leveza), 1),
+                hsla(var(--primeiro-matiz), var(--saturacao), var(--leveza), .2)
+                );
+    border-radius: 10rem 10rem 1rem 1rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.home__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.home__social,
+.home__scroll {
+    position: absolute;
+}
+
+.home__social {
+    bottom: 5rem;
+    left: 0;
+    display: grid;
+    gap: .5rem;
+}
+
+.home__social-link {
+    width: max-content;
+    background-color: var(--cor-container);
+    color: var(--primeira-cor);
+    padding: .25rem;
+    border-radius: .25rem;
+    display: flex;
+    font-size: 1rem;
+    transition: .4s;
+}
+
+.home__social-link:hover {
+    background-color: var(--primeira-cor);
+    color: #fff;
+}
+
+.home__social::after {
+    content: "";
+    width: 32px;
+    height: 2px;
+    background-color: var(--primeira-cor);
+    transform: rotate(90deg) translate(16px, 3px);
+}
+
+.home__scroll {
+    color: var(--primeira-cor);
+    right: -1.5rem;
+    bottom: 4rem;
+    display: grid;
+    row-gap: 2.25rem;
+    justify-items: center;
+}
+
+.home__scroll-icon {
+    font-size: 1.25rem;
+}
+
+.home__scroll-name {
+    font-size: var(--tamanho-fonte-menor);
+    transform: rotate(-90deg);
+    margin-top: 1rem;
+}
+
+
+/* BUTTONS */
+
+.button {
+    display: inline-block;
+    background-color: var(--primeira-cor);
+    color: var(--cor-corpo);
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    font-weight: var(--fonte-media);
+    transition: .4s;
+}
+
+.button:hover {
+    background-color: var(--primeira-cor-alternativa);
+    color: var(--cor-corpo);
+}
+
+.button--ghost {
+    background-color: transparent;
+    border: 2px solid var(--primeira-cor);
+    color: var(--primeira-cor);
+}
+
+/* ABOUT */
+
+.about__container {
+    row-gap: 2.5rem;
+}
+
+.about__img {
+    width: 220px;
+    border-radius: 1.5rem;
+    justify-self: center;
+}
+
+.about__data {
+    text-align: center;
+}
+
+.about__info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+    margin-bottom: 2rem;
+}
+
+.about__box {
+    background-color: var(--cor-container);
+    border-radius: .75rem;
+    padding: .75rem .5rem;
+}
+
+.about__icon {
+    font-size: 1.5rem;
+    color: var(--primeira-cor);
+    margin-bottom: .5rem;
+}
+
+.about__title {
+    font-size: var(--tamanho-fonte-pequena);
+}
+
+.about__subtitle {
+    font-size: var(--tamanho-fonte-menor-ainda);
+}
+
+.about__description {
+    margin-bottom: 2rem;
+}
+
+/* SKILLS */
+
+/* SERVIÇOS */
+
+/* Seviços modal */
+
+/* Ativar modal */
